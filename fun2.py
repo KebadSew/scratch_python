@@ -6,7 +6,7 @@ def sum(x,y):
     
 sum(5, 7)
 
-# subtract two numbers
+# subtract
 
 def mekenes(x,y):
     print("Mekenes of x-y is ",x-y)
