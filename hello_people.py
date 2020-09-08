@@ -22,4 +22,6 @@ print('The sum of 5 + 3 =', z)
 
 """ 
 this is a comment
+=======
+# -*- coding: utf-8 -*-
 """
