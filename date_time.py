@@ -8,7 +8,7 @@ Created on Thu Sep 17 21:07:27 2020
 import clear_console as cs
 import datetime as dt
 import time as tm
-import pytz as ptz
+import pytz 
 
 cs.cls()
 
@@ -56,7 +56,15 @@ utc_now = dt.datetime.now(dt.timezone.utc)
 print(utc_now)
 print(' --- ')
 
-p = ptz.utc.localize(dt.datetime.utcnow())
+p = pytz.utc.localize(dt.datetime.utcnow())
 print(p)
-#p = ptz.timezone('US/Eastern')
 
+EST = pytz.timezone('US/Eastern')
+NY = pytz.timezone('America/New_York') 
+IST = pytz.timezone('Asia/Kolkata') 
+UTC = pytz.utc
+
+print(dt.datetime.now(EST))
+print(dt.datetime.now(NY))
+print(dt.datetime.now(IST))
+print(dt.datetime.now(UTC))
