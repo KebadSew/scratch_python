@@ -81,9 +81,38 @@ for g in grades:
     x+=1
 
 print(top_grades)
+print(len(top_grades))
 
+cs.cls()
 
+for i in range(10):    
+    for j in range(10):  
+        if j<=9 and j%2!=0 :
+            print('*',end=' ')
+        else:
+            print('.',end=' ')
+    if i%2==0:
+        print('-')
+    else:
+        print('^')
 
+cs.cls()
+
+#nested loop
+for i in range(0,10): 
+    print('*' * (i+1),end=' ')
+    for j in range(0,10):
+        if j==9:
+            print('')
+
+   
+cs.cls()
+
+ex = [(5,6),(3,2),(1,6),(11, 'hello')]
+for a,b in ex:
+    print("a is ",a)
+    print("b is ",b)
+    
 
 
 
