@@ -53,7 +53,7 @@ for e in x:
 
 cls()
 
-x = [1,2,3,[4,5,[6,7],8],9]
+x = [1,2,3,[4,5,[6,7,[0,[8]]],8],9]
 #unpacking using recursion
 def unpack(x):   
  for e in x:
