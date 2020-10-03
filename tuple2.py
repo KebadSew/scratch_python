@@ -18,7 +18,7 @@ print(x[3])
 print(x[3][0])
 print(x[3][1])
 
-cls()
+#cls()
 
 x = [1,2,3,[4,5,[6,7]]]
 
@@ -53,8 +53,12 @@ for e in x:
 
 cls()
 
+
+
+
 x = [1,2,3,[4,5,[6,7,[0,[8]]],8],9]
 #unpacking using recursion
+
 def unpack(x):   
  for e in x:
      if type(e) == list:
@@ -63,6 +67,7 @@ def unpack(x):
          print(e)    
          
 unpack(x)
+cls()
     
 
 
