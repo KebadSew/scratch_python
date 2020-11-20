@@ -9,6 +9,7 @@ from clear_console import cls
 import numpy as np
 import pandas as pd
 import pandas_datareader.data as web
+import matplotlib.pyplot as plt
 
 cls()
 
@@ -134,10 +135,21 @@ volume = pd.DataFrame({ticker: data['Volume']
                       for ticker, data in all_data.items()})
 
 returns = price.pct_change()
-print(returns.tail())
+print(returns.tail(8))
+print(returns.head())
+print(returns)
 print(price)
+print(price.describe())
+price.hist(bins=1300)
+plt.show()
 
-
+#correlation / corr
+print(returns['MSFT'].corr(returns['IBM']))
+print(returns['AAPL'].corr(returns['GOOG']))
+print(returns['AAPL'].corr(returns['AAPL']))
+print(returns.MSFT.corr(returns.IBM))
+print(returns.corr())
+print(returns.cov())
 
 
 
