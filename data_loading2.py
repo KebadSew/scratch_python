@@ -5,10 +5,8 @@ Created on Mon Nov 23 20:19:31 2020
 @author: legen
 """
 
-from clear_console import cls 
-import numpy as np
+from clear_console import cls
 import pandas as pd
-import pandas_datareader.data as web
 import json
 import requests as req
 import sqlite3 as sql
