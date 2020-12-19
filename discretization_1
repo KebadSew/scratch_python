@@ -1,0 +1,25 @@
+# Online Python compiler (interpreter) to run Python online.
+# Write Python 3 code in this online editor and run it.
+
+import pandas as pd
+#using bins
+ages = [20, 22, 25, 27, 21, 23, 37, 31, 61, 45, 41, 32]
+bins = [18, 25, 35, 60, 100]
+data = pd.cut(ages, bins)
+print(data)
+print(pd.value_counts(data))
+data2 = pd.Series(ages)
+print(data2.describe())
+
+
+#no bins
+group_names = ['Youth', 'YoungAdult', 'MiddleAged', 'Senior']
+data = pd.cut(ages, 4,labels=group_names,precision=0)
+print(data)
+print (pd.value_counts(data))
+
+quantile = [0,0.3,0.5,0.8,1.]
+data = pd.qcut(ages,quantile,precision=0)
+print(data)
+ages.sort()
+print(ages)
