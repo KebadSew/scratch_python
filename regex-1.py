@@ -1,50 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Dec 24 20:26:10 2020
-
-@author: legen
-"""
-
-from clear_console import cls 
-import re
-
-cls()
-
-# \s pattern matching for space
-# + one or more
-# * zero or more
-# \s+ pattern matching for one or more spaces
-# \n new line
-# \t tab
-
-t = "abcxdefxghi"
-print(re.split('x',t))
-
-text = "foo bar\t baz \tqux" #space, tab
-arr = re.split('\s+', text)
-print(arr)
-
-space_regex = re.compile('\s+')
-print(space_regex.split(text))
-print(space_regex.findall(text))
-
-print(r'C:\x') #recommended
-print('C:\\x')
-
-cls()
-#Example
-
-text = """Dave dave@google.comSteve steve@gmail.comRob rob@gmail.comRyan ryan@yahoo.com"""
-
-pattern = r'[A-Z]+[a-z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'
-regex = re.compile(pattern,flags=re.IGNORECASE)
-
-text = """Dave dave@google.comSteve steve@gmail.comRob rob@gmail.comRyan ryan@yahoo.com"""
-fname_pattern = r'[A-Z]{1}[a-z]+'
-fname_regex = re.compile(fname_pattern)
-print(fname_regex.findall(text))
-
-
 import re
 
 text = """Dave dave@google.com
@@ -56,12 +9,58 @@ pattern = r'[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'
 
 # re.IGNORECASE makes the regex case-insensitive
 regex = re.compile(pattern, flags=re.IGNORECASE)
-print(regex.findall(text))
+all_emails = regex.findall(text)
+print(all_emails)
+
+
 m =regex.search(text)
 email = text[m.start():m.end()]
 
 print(email)
+print("------")
 
+print(text)
+redacted = regex.sub('*****',text)
+print(redacted)
+print(text)
+
+# segmentation: username, domain name and domain suffix
+# group1: ([A-Z0-9._%+-]+)
+# group2: ([A-Z0-9.-]+)
+# group3: ([A-Z]{2,4})
+
+pattern = r'([A-Z0-9._%+-]+)@([A-Z0-9.-]+)\.([A-Z]{2,4})'
+regex = re.compile(pattern,flags=re.IGNORECASE)
+
+# better solution *** more efficient ***
+all_groups= regex.findall(text)
+print(all_groups)
+print('++++++++++++++++')
+for group in all_groups:
+    print('userName: ',group[0])
+    print('domain:',group[1])
+    print('domain suffix:',group[2])
+    print('-------------')
+print('++++++++++++++++')
+
+
+print('   ----------- ')
+first_match = regex.match('steve@gmail.com')
+first_group = first_match.groups()
+print(first_group)
+
+# the longest approach  ** very slow performance **
+print(' -----------------------')
+for email in all_emails:
+    match = regex.match(email) # not recommended
+    groups = match.groups() # not recommended
+    print('username: ',groups[0])
+    print('domain: ',groups[1])
+    print('domain suffix: ',groups[2])
+    print(' ============== ')
+print(' -------------------------- ')
+
+print(regex.sub(r'Username: \1, Domain: \2, Suffix: \3', text))
 
 
 # text = """Dave dave@google.com
@@ -73,4 +72,3 @@ print(email)
 # fname_pattern = r'[A-Z]{1}[a-z]+'
 # fname_regex = re.compile(fname_pattern)
 # print(fname_regex.findall(text))
-
